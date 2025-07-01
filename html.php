@@ -19,3 +19,8 @@ function task_heading($task_number)
 {
     echo "<h2>Задача $task_number</h2>";
 }
+
+function br()
+{
+    echo '<br>';
+}
