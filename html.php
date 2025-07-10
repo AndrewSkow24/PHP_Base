@@ -24,3 +24,8 @@ function br()
 {
     echo '<br>';
 }
+
+function pre($text)
+{
+    echo "<pre>$text</pre>";
+}
