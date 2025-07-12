@@ -7,9 +7,9 @@
 </head>
 
 <body>
-    <?php
+
     echo 'моя первая программа';
-    ?>
+
 </body>
 
 </html>
