@@ -9,3 +9,8 @@ function newString()
 {
     echo "\n";
 }
+
+function p($paragraph_text)
+{
+    echo "<p>$paragraph_text</p>";
+}
