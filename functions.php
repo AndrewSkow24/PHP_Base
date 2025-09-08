@@ -1,5 +1,7 @@
 <?php
 
+require_once "html.php";
+
 function task($number)
 {
     echo "\nTask $number\n";
