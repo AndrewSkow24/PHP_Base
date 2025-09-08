@@ -6,23 +6,22 @@
 -- Время создания: Сен 08 2025 г., 09:51
 -- Версия сервера: 8.0.40
 -- Версия PHP: 8.3.14
-
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */
+;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */
+;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */
+;
+/*!40101 SET NAMES utf8mb4 */
+;
 --
 -- База данных: `mydb`
 --
 
 -- --------------------------------------------------------
-
 --
 -- Структура таблицы `users`
 --
@@ -32,21 +31,18 @@ CREATE TABLE `users` (
   `name` varchar(32) COLLATE utf8mb4_general_ci NOT NULL,
   `age` smallint NOT NULL,
   `salary` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_general_ci;
 --
 -- Дамп данных таблицы `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `age`, `salary`) VALUES
-(1, 'user1', 23, 400),
-(2, 'user1', 23, 400),
-(3, 'user2', 25, 500),
-(4, 'user3', 23, 500),
-(5, 'user4', 30, 900),
-(6, 'user5', 27, 400),
-(7, 'user6', 28, 900);
-
+INSERT INTO `users` (`id`, `name`, `age`, `salary`)
+VALUES (1, 'user1', 23, 400),
+  (2, 'user2', 25, 500),
+  (3, 'user3', 23, 500),
+  (4, 'user4', 30, 900),
+  (5, 'user5', 27, 400),
+  (6, 'user6', 28, 900);
 --
 -- Индексы сохранённых таблиц
 --
@@ -55,8 +51,7 @@ INSERT INTO `users` (`id`, `name`, `age`, `salary`) VALUES
 -- Индексы таблицы `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`);
-
+ADD PRIMARY KEY (`id`);
 --
 -- AUTO_INCREMENT для сохранённых таблиц
 --
@@ -65,9 +60,12 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+MODIFY `id` int NOT NULL AUTO_INCREMENT,
+  AUTO_INCREMENT = 8;
 COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */
+;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */
+;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */
+;
