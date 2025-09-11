@@ -1,32 +1,102 @@
 * {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  box-sizing: border-box;
 }
 
 body {
-  background: linear-gradient(rgb(202, 254, 24), rgb(232, 240, 242));
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
 }
 
-h1,
-h2,
-h3 {
+.form-container {
+  background-color: white;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 450px;
+  backdrop-filter: blur(10px);
+}
+
+.form-tile {
   text-align: center;
-  margin-top: 25px;
+  padding-bottom: 50px;
+  color: #333;
+  font-size: 28px;
+  font-weight: 600px;
 }
 
-body {
-  padding: 25px;
+.form-group {
+  margin-bottom: 25px;
+  position: relative;
 }
 
-h1 {
-  font-size: 36px;
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  color: #555;
+  font-weight: 500;
+  font-size: 14px;
 }
 
-p {
-  margin-top: 25px;
-  text-align: justify;
-  /* padding: 15px; */
-  color: rgb(12, 0, 0);
-  font-size: 24px;
+.form-group input {
+  width: 100%;
+  padding: 15px;
+  border: 2px solid #e1e5e9;
+  border-radius: 12px;
+  font-size: 16px;
+  transition: all 0.3 ease;
+  outline: none;
+}
+
+.form-group input:focus {
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+  transform: translateY(-2px);
+}
+
+.form-group input::placeholder {
+  color: #999;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 16px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3 ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+}
+
+.submit-btn:active {
+  transform: translateY(0);
+}
+
+@media (max-width: 480px) {
+  .form-container {
+    padding: 30px 20px;
+  }
+  .form-title {
+    font-size: 24px;
+  }
+  .form-group input {
+    padding: 12px;
+  }
 }

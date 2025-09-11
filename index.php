@@ -1,7 +1,22 @@
-<!-- index.php -->
-<meta charset="utf-8">
+<?php
 
-error_reporting(E_ALL);
-ini_set('display_errors', 'on');
-mb_internal_encoding('UTF-8');
-include '007.php';
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul>
+        <li>
+            <a href="346.php">346. Удаление данных из БД c помощью GET-запросов</a>
+        </li>
+    </ul>
+</body>
+
+</html>
