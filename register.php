@@ -33,23 +33,59 @@
                 </div>
 
 
+                <div class="form-group">
+                    <label for="dateBirth">Дата рождения</label>
+                    <div class="input-group">
+                        <i class="fas fa-calendar-day input-icon"></i>
+                        <input type="date" name="dateBirth" id="dateBirth" placeholder="Введите дату рождения" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">E-email</label>
+                    <div class="input-group">
+                        <i class="fas fa-envelope input-icon"></i>
+                        <input type="email" name="email" id="email" placeholder="Введите e-mail" required>
+                    </div>
+                </div>
+
                 <input type="submit" value="Зарегистрироваться">
             </form>
 
 
             <?php
 
+            session_start();
+
             require_once "connectDB.php";
 
             if (isset($_POST['login']) and isset($_POST['password'])) {
                 $login = $_POST['login'];
                 $password = $_POST['password'];
+                $dateBirth = $_POST['dateBirth'];
+                $email = $_POST['email'];
+
+                // echo $dateBirth;
+
 
                 $query = "INSERT INTO users SET
-                    login='$login', password='$password'";
+                    login='$login', password='$password', dateBirth = '$dateBirth', email='$email' ";
                 mysqli_query($link, $query);
 
-                header("Location: login.php");
+
+                $query = "SELECT * FROM users WHERE login='$login' AND password='$password'";
+                $res = mysqli_query($link, $query);
+                $user = mysqli_fetch_assoc($res);
+
+                if (!empty($user)) {
+                    header('Location: index.php');
+                    $_SESSION['successAuth'] = "Авторизация прошла успешно!";
+                    $_SESSION['auth'] = true;
+                    $_SESSION['login'] = $login;
+                    $_SESSION['id'] = mysqli_insert_id($link);
+
+                    header("Location: index.php");
+                }
             }
 
 

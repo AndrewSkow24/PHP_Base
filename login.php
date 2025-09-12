@@ -18,10 +18,13 @@ if (!empty($_POST['password']) and !empty($_POST['login'])) {
         $_SESSION['successAuth'] = "Авторизация прошла успешно!";
         $_SESSION['auth'] = true;
         $_SESSION['login'] = $login;
+        $_SESSION['id'] = mysqli_insert_id($link);
     } else {
         $error = "Неверный логин или пароль";
     }
 }
+
+
 
 ?>
 
