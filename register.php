@@ -1,3 +1,53 @@
+<?php
+
+session_start();
+
+require_once "connectDB.php";
+
+if (isset($_POST['login']) and isset($_POST['password']) and isset($_POST['confirm'])) {
+    $login = $_POST['login'];
+    $password = $_POST['password'];
+    $confirm = $_POST['confirm'];
+    $dateBirth = $_POST['dateBirth'];
+    $email = $_POST['email'];
+
+    if ($password == $confirm) {
+
+        $query = "INSERT INTO users SET
+                    login='$login', password='$password', dateBirth = '$dateBirth', email='$email' ";
+        mysqli_query($link, $query);
+    } else {
+        $error = "Пароли не совпадают";
+    }
+
+
+    if (empty($error)) {
+
+
+        $query = "SELECT * FROM users WHERE login='$login' AND password='$password'";
+        $res = mysqli_query($link, $query);
+        $user = mysqli_fetch_assoc($res);
+
+        if (!empty($user)) {
+            header('Location: index.php');
+            $_SESSION['successAuth'] = "Авторизация прошла успешно!";
+            $_SESSION['auth'] = true;
+            $_SESSION['login'] = $login;
+            $_SESSION['id'] = mysqli_insert_id($link);
+
+            header("Location: index.php");
+        }
+    }
+}
+
+
+
+
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,6 +64,13 @@
         <div class="auth-card">
             <h1>Регистрация</h1>
             <p>Создайте новый аккаунт</p>
+
+
+            <?php if (isset($error)): ?>
+                <div class="error-message">
+                    <i class="fas fa-exclamation-circle"></i> <?= $error ?>
+                </div>
+            <?php endif; ?>
 
             <form action="" method="POST" id="registrationForm">
                 <div class="form-group">
@@ -32,6 +89,13 @@
                     </div>
                 </div>
 
+                <div class="form-group">
+                    <label for="password">Подтверждение пароля</label>
+                    <div class="input-group">
+                        <i class="fas fa-lock input-icon"></i>
+                        <input type="password" name="confirm" id="confirm" placeholder="Повторите пароль" required>
+                    </div>
+                </div>
 
                 <div class="form-group">
                     <label for="dateBirth">Дата рождения</label>
@@ -53,43 +117,6 @@
             </form>
 
 
-            <?php
-
-            session_start();
-
-            require_once "connectDB.php";
-
-            if (isset($_POST['login']) and isset($_POST['password'])) {
-                $login = $_POST['login'];
-                $password = $_POST['password'];
-                $dateBirth = $_POST['dateBirth'];
-                $email = $_POST['email'];
-
-                // echo $dateBirth;
-
-
-                $query = "INSERT INTO users SET
-                    login='$login', password='$password', dateBirth = '$dateBirth', email='$email' ";
-                mysqli_query($link, $query);
-
-
-                $query = "SELECT * FROM users WHERE login='$login' AND password='$password'";
-                $res = mysqli_query($link, $query);
-                $user = mysqli_fetch_assoc($res);
-
-                if (!empty($user)) {
-                    header('Location: index.php');
-                    $_SESSION['successAuth'] = "Авторизация прошла успешно!";
-                    $_SESSION['auth'] = true;
-                    $_SESSION['login'] = $login;
-                    $_SESSION['id'] = mysqli_insert_id($link);
-
-                    header("Location: index.php");
-                }
-            }
-
-
-            ?>
 
             <div class="auth-footer">
                 <p>Уже есть аккаунт ?
