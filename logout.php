@@ -1,4 +1,8 @@
 <?php
+
 session_start();
-session_destroy();
-echo "Сессия завершена!";
+
+$_SESSION['auth'] = null;
+$_SESSION['login'] = "";
+
+header("Location: index.php");
