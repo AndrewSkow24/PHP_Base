@@ -31,6 +31,8 @@ body {
 .container {
   width: 100%;
   max-width: 400px;
+  max-height: 90vh;
+  overflow-y: auto;
 }
 
 .auth-card {
@@ -39,6 +41,7 @@ body {
   box-shadow: var(--shadow);
   padding: 2rem;
   text-align: center;
+  max-height: none;
 }
 
 h1 {

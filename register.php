@@ -10,14 +10,26 @@ if (isset($_POST['login']) and isset($_POST['password']) and isset($_POST['confi
     $confirm = $_POST['confirm'];
     $dateBirth = $_POST['dateBirth'];
     $email = $_POST['email'];
+    $error = "";
 
-    if ($password == $confirm) {
 
-        $query = "INSERT INTO users SET
+    // запрос на на отсутствие дублёра логина
+
+    $userDouble = mysqli_fetch_assoc(
+        mysqli_query($link, "SELECT * FROM users WHERE login='$login';")
+    );
+
+    if (empty($userDouble)) {
+
+        if ($password == $confirm) {
+            $query = "INSERT INTO users SET
                     login='$login', password='$password', dateBirth = '$dateBirth', email='$email' ";
-        mysqli_query($link, $query);
+            mysqli_query($link, $query);
+        } else {
+            $error .= "Пароли не совпадают";
+        }
     } else {
-        $error = "Пароли не совпадают";
+        $error .= "Пользователь с таким логином уже зарегистрирован";
     }
 
 
@@ -77,7 +89,7 @@ if (isset($_POST['login']) and isset($_POST['password']) and isset($_POST['confi
                     <label for="login">Логин</label>
                     <div class="input-group">
                         <i class="fa fa-user input-icon"></i>
-                        <input type="text" name="login" id="login" placeholder="Придумайте логин" required>
+                        <input type="text" name="login" id="login" placeholder="Придумайте логин" value="<?= $_POST['name'] ?? '' ?>" required>
                     </div>
                 </div>
 
@@ -89,7 +101,7 @@ if (isset($_POST['login']) and isset($_POST['password']) and isset($_POST['confi
                     </div>
                 </div>
 
-                <div class="form-group">
+                <div class=" form-group">
                     <label for="password">Подтверждение пароля</label>
                     <div class="input-group">
                         <i class="fas fa-lock input-icon"></i>
@@ -101,15 +113,15 @@ if (isset($_POST['login']) and isset($_POST['password']) and isset($_POST['confi
                     <label for="dateBirth">Дата рождения</label>
                     <div class="input-group">
                         <i class="fas fa-calendar-day input-icon"></i>
-                        <input type="date" name="dateBirth" id="dateBirth" placeholder="Введите дату рождения" required>
+                        <input type="date" name="dateBirth" id="dateBirth" placeholder="Введите дату рождения" value="<?= $_POST['dateBirth'] ?? '' ?>" required>
                     </div>
                 </div>
 
-                <div class="form-group">
+                <div class=" form-group">
                     <label for="password">E-email</label>
                     <div class="input-group">
                         <i class="fas fa-envelope input-icon"></i>
-                        <input type="email" name="email" id="email" placeholder="Введите e-mail" required>
+                        <input type="email" name="email" id="email" placeholder="Введите e-mail" value="<?= $_POST['email'] ?? '' ?>" required>
                     </div>
                 </div>
 
