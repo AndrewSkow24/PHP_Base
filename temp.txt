@@ -1,0 +1,28 @@
+<!-- Кнопка изменения -->
+                        <!-- <button class="action-btn edit-btn" onclick="openEditModal 
+                        <?= $user['id'] ?>, '<?= $user['login'] ?>', '<?= $user['dateBirth'] ?>')">
+                            <i class="fas fa-edit">Изменить</i>
+                        </button> -->
+                        <!-- Кнопка удаления -->
+
+                        <!-- <?php if ($user['id'] != $_SESSION['id']): ?>
+                            <a href="admin.php?delete_id=<?= $user['id'] ?>" class="action-btn delete-btn"
+                                onclick="return confirm('Вы уверены, что хотите удалить этого пользователя ?')">
+                                <i class="fas fa-trash"></i> Удалить
+                            </a>
+                        <?php endif; ?> -->
+
+
+                         <!-- Кнопка изменения -->
+                        <!-- <button class="action-btn edit-btn" onclick="openEditModal 
+                        <?= $user['id'] ?>, '<?= $user['login'] ?>', '<?= $user['dateBirth'] ?>')">
+                            <i class="fas fa-edit">Изменить</i>
+                        </button> -->
+                        <!-- Кнопка удаления -->
+
+                        <!-- <?php if ($user['id'] != $_SESSION['id']): ?>
+                            <a href="admin.php?delete_id=<?= $user['id'] ?>" class="action-btn delete-btn"
+                                onclick="return confirm('Вы уверены, что хотите удалить этого пользователя ?')">
+                                <i class="fas fa-trash"></i> Удалить
+                            </a>
+                        <?php endif; ?> -->

@@ -35,6 +35,7 @@ if (isset($_SESSION['successAuth'])) {
                             <div class="user-avatar">
                                 <?= $_SESSION['login'][0] ?>
                             </div>
+                            <!-- <a href="admin.php">Админ-панель</a> -->
 
                         </div>
 

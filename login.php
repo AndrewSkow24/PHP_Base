@@ -6,7 +6,7 @@ session_start();
 
 if (!empty($_POST['password']) and !empty($_POST['login'])) {
     $login = $_POST['login'];
-    $password = $_POST['password'];
+    $password = md5($_POST['password']);
 
     $query = "SELECT * FROM users
         WHERE login='$login' AND password='$password'";
