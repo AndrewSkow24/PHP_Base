@@ -6,21 +6,25 @@ session_start();
 
 if (!empty($_POST['password']) and !empty($_POST['login'])) {
     $login = $_POST['login'];
-    $password = md5($_POST['password']);
+    $hash = mysqli_fetch_assoc(mysqli_query($link, "SELECT password FROM users
+        WHERE login='$login'"))['password'];
 
-    $query = "SELECT * FROM users
-        WHERE login='$login' AND password='$password'";
-    $res = mysqli_query($link, $query);
-    $user = mysqli_fetch_assoc($res);
 
-    if (!empty($user)) {
-        header('Location: index.php');
-        $_SESSION['successAuth'] = "Авторизация прошла успешно!";
-        $_SESSION['auth'] = true;
-        $_SESSION['login'] = $login;
-        $_SESSION['id'] = mysqli_insert_id($link);
-    } else {
-        $error = "Неверный логин или пароль";
+    if (password_verify($_POST['password'], $hash)) {
+        $query = "SELECT * FROM users
+        WHERE login='$login' ";
+        $res = mysqli_query($link, $query);
+        $user = mysqli_fetch_assoc($res);
+
+        if (!empty($user)) {
+            header('Location: index.php');
+            $_SESSION['successAuth'] = "Авторизация прошла успешно!";
+            $_SESSION['auth'] = true;
+            $_SESSION['login'] = $login;
+            $_SESSION['id'] = mysqli_insert_id($link);
+        } else {
+            $error = "Неверный логин или пароль";
+        }
     }
 }
 

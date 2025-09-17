@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 require_once "connectDB.php";
 $error = "";
@@ -13,6 +12,7 @@ $countries = [
     "Япония"
 ];
 
+
 // проверка, что все поля заполнены
 if (
     isset($_POST['login']) and
@@ -23,8 +23,7 @@ if (
     isset($_POST['country'])
 ) {
     $login = trim($_POST['login']);
-    $password = md5($_POST['password']);
-    $confirm = md5($_POST['confirm']);
+    $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
     $dateBirth = $_POST['dateBirth'];
     $email = $_POST['email'];
     $country = $_POST['country'];
@@ -45,7 +44,7 @@ if (
         // длина пароля
     } elseif (strlen($_POST['password']) < 6 or strlen($_POST['password']) > 12) {
         $errorPassword = "Длина пароля должна составлять от 6 до 12 символов";
-    } elseif ($password != $confirm) {
+    } elseif ($_POST['password'] != $_POST['confirm']) {
         $errorPassword = "Пароли не совпадают!";
     } else {
         // проверка на на отсутствие дублёра логина
@@ -60,7 +59,7 @@ if (
     // если ошибок нет регистрируем пользователя
     if (empty($errorLogin) and empty($errorPassword)) {
         $resultRegistration = $query = "INSERT INTO users SET
-                    login='$login', password='$password', dateBirth = '$dateBirth', email='$email', country='$country'; ";
+                    login='$login', password='$password', dateBirth = '$dateBirth', email='$email', country='$country'";
         mysqli_query($link, $query);
     }
 

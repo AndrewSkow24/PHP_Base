@@ -33,7 +33,7 @@ if (isset($_SESSION['successAuth'])) {
                     <?php else: ?>
                         <div class="user-info">
                             <div class="user-avatar">
-                                <?= $_SESSION['login'][0] ?>
+                                <a href="profile.php?login=<?= $_SESSION['login'] ?>"> <?= $_SESSION['login'][0] ?> </a>
                             </div>
                             <!-- <a href="admin.php">Админ-панель</a> -->
 
