@@ -27,6 +27,8 @@ if (
     $dateBirth = $_POST['dateBirth'];
     $email = $_POST['email'];
     $country = $_POST['country'];
+    $name = $_POST['name'] ?? "";
+    $surname = $_POST['surname'] ?? "";
     $resultRegistration = "";
     $errorLogin = "";
     $errorPassword = "";
@@ -59,7 +61,7 @@ if (
     // если ошибок нет регистрируем пользователя
     if (empty($errorLogin) and empty($errorPassword)) {
         $resultRegistration = $query = "INSERT INTO users SET
-                    login='$login', password='$password', dateBirth = '$dateBirth', email='$email', country='$country'";
+                    login='$login', password='$password', dateBirth = '$dateBirth', email='$email', country='$country', name='$name', surname='$surname'";
         mysqli_query($link, $query);
     }
 
@@ -104,6 +106,8 @@ if (
 </head>
 
 <body>
+
+
     <div class="container">
         <div class="auth-card">
             <h1>Регистрация</h1>
@@ -163,6 +167,23 @@ if (
                 </div>
 
 
+                <div class="form-group">
+                    <label for="dateBirth">Имя</label>
+                    <div class="input-group">
+                        <i class="fas fa-calendar-day input-icon"></i>
+                        <input type="text" name="name" id="dateBirth" placeholder="Введите имя" value="<?= $_POST['name'] ?? '' ?>">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="dateBirth">Фамилия</label>
+                    <div class="input-group">
+                        <i class="fas fa-calendar-day input-icon"></i>
+                        <input type="text" name="surname" id="dateBirth" placeholder="Введите имя" value="<?= $_POST['surname'] ?? '' ?>">
+                    </div>
+                </div>
+
+
                 <?php if (!empty($errorEmail)): ?>
                     <div class="error-message">
                         <i class="fas fa-exclamation-circle"></i> <?= $errorEmail ?>
@@ -213,6 +234,8 @@ if (
 
         </div>
     </div>
+
+
 
 </body>
 
